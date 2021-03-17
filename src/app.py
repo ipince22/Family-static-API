@@ -28,23 +28,22 @@ def sitemap():
 # Get All Members
 @app.route('/members', methods=['GET'])
 def get_all_members():
-
-    members = jackson_family.get_all_members()
-    response_body = members
-    return jsonify(response_body), 200
+    data = jackson_family.get_all_members()
+    return jsonify(data), 200
 
 # Get Single Member
 @app.route('/member/<int:id>', methods=["GET"])
 def get_member(id):
-
     member = jackson_family.get_member(id)
+    '''
     response_body = {
         "name": f"{member['first_name']} {member['last_name']}",
         "id": member['id'],
         "age": member['age'],
         "lucky_numbers": member['lucky_numbers']
     }
-    return jsonify(response_body), 200
+    '''
+    return jsonify(member), 200
 
 # Create Member
 @app.route('/member', methods=['POST'])
