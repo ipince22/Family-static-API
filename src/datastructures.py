@@ -42,7 +42,9 @@ class FamilyStructure:
         return randint(0, 99999999)
 
     def add_member(self, member):
+        self._members.append(member)
         # fill this method and update the return
+        '''
         new_member = {
             "id": self._generateId(),
             "first_name": member['first_name'],
@@ -51,16 +53,27 @@ class FamilyStructure:
             "lucky_numbers": member["lucky_numbers"]
         }
         self._members.append(new_member)
+        '''
 
     def delete_member(self, id):
-        # fill this method and update the return
-        member_to_delete = list(filter(lambda member: (member['id'] == id), self._members))
-        self._members.remove(member_to_delete[0])
+        # use to lambda
+        #member_to_delete = list(filter(lambda member: (member['id'] == id), self._members))
+        #self._members.remove(member_to_delete[0])
+        
+        #usando for
+        for position in range(len(self._members)):
+            if self._members[position]["id"] == id:
+                self._members.pop(position)
 
     def get_member(self, id):
-        # fill this method and update the return
-        member_to_get = list(filter(lambda member: (member['id'] == id), self._members))
-        return member_to_get[0]
+        # usando lambda
+        #member_to_get = list(filter(lambda member: (member['id'] == id), self._members))
+        #return member_to_get[0]
+        
+        #otra manera
+        for m in self._members:
+            if m["id"] == int(id):
+                return m                
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
